@@ -2,15 +2,14 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>متابعة روحية</title>
+  <title>تسجيل حضور</title>
   <style>
-    body {font-family: Cairo, Cario; direction: rtl; background: #f4f4f4; padding: 20px;}
+    body {font-family: Tahoma, Arial; direction: rtl; background: #f4f4f4; padding: 20px;}
     .form-box {background: #fff; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
     label {display: block; margin: 10px 0 5px; font-weight: bold;}
     input[type="text"], input[type="password"], input[type="date"], select {width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;}
     .section {margin-bottom: 20px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; background: #fafafa;}
     .section h3 {margin-top: 0; color: #333;}
-    .options label {margin-right: 15px;}
     button {background: #0078d7; color: #fff; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer;}
     button:hover {background: #005a9e;}
     #loading {color: #d35400; font-weight: bold; margin-top: 10px;}
@@ -22,8 +21,7 @@
 </head>
 <body>
 <div class="form-box">
-  <h2>متابعة روحية كنيسة العذراء مريم بالنواميس و المراونة</h2>
-  <h2>إعداد روماني رؤوف</h2>
+  <h2>تسجيل حضور</h2>
   
   <label>الرقم القومي:</label>
   <input type="text" id="nid" placeholder="ادخل الرقم القومي">
@@ -36,60 +34,58 @@
     
     <div class="section">
       <h3>الأنشطة</h3>
-      <div class="options">
-        <label>قداس:
-          <select name="mass"><option>حضر</option><option>لم يحضر</option></select>
-        </label>
-        <label>مدارس أحد:
-          <select name="sundaySchool"><option>حضر</option><option>لم يحضر</option></select>
-        </label>
-        <label>اجتماع خدمة:
-          <select name="serviceMeeting"><option>حضر</option><option>لم يحضر</option></select>
-        </label>
-        <label>اجتماع:
-          <select name="meeting"><option>حضر</option><option>لم يحضر</option></select>
-        </label>
-      </div>
+      <label>قداس:
+        <select name="mass"><option>حضر</option><option>لم يحضر</option></select>
+      </label>
+      <label>مدارس أحد:
+        <select name="sundaySchool"><option>حضر</option><option>لم يحضر</option></select>
+      </label>
+      <label>اجتماع خدمة:
+        <select name="serviceMeeting"><option>حضر</option><option>لم يحضر</option></select>
+      </label>
+      <label>اجتماع:
+        <select name="meeting"><option>حضر</option><option>لم يحضر</option></select>
+      </label>
     </div>
-   <div class="section">
-  <h3>الأجبية</h3>
-  <label><input type="radio" name="agpeya" value="منتظم"> منتظم</label>
-  <label><input type="radio" name="agpeya" value="غير منتظم"> غير منتظم</label>
-</div>
-<div class="section">
-  <h3>القراءات</h3>
-  <label><input type="radio" name="readings" value="عهد قديم فقط"> عهد قديم فقط</label>
-  <label><input type="radio" name="readings" value="عهد جديد فقط"> عهد جديد فقط</label>
-  <label><input type="radio" name="readings" value="عهد قديم وعهد جديد"> عهد قديم وعهد جديد</label>
-</div>
-
+    <div class="section">
+      <h3>الأجبية</h3>
+      <label><input type="radio" name="agpeya" value="منتظم"> منتظم</label>
+      <label><input type="radio" name="agpeya" value="غير منتظم"> غير منتظم</label>
+    </div>
+    
+    <div class="section">
+      <h3>القراءات</h3>
+      <label><input type="radio" name="readings" value="عهد قديم فقط"> عهد قديم فقط</label>
+      <label><input type="radio" name="readings" value="عهد جديد فقط"> عهد جديد فقط</label>
+      <label><input type="radio" name="readings" value="عهد قديم وعهد جديد"> عهد قديم وعهد جديد</label>
+    </div>
     
     <button type="submit">تسجيل</button>
   </form>
-    <hr>
- <hr>
-<h3>التقرير</h3>
-<!-- زر لفتح التقرير -->
-<button onclick="showReportForm()">عرض التقرير</button>
+  <hr>
+  <h3>التقرير</h3>
+  <button onclick="showReportForm()">عرض التقرير</button>
 
-<!-- الفورم مخفي لحد ما المستخدم يدخل كلمة السر -->
-<div id="reportForm" style="display:none; margin-top:15px;">
-  <input type="password" id="reportPass" placeholder="ادخل كلمة السر"><br>
-  <input type="date" id="reportDate"><br>
-  <input type="text" id="reportName" placeholder="ابحث بجزء من الاسم"><br>
-  <button onclick="showReport()">عرض التقرير</button>
-  <button onclick="printReport()">🖨️ طباعة التقرير</button>
+  <div id="reportForm" style="display:none; margin-top:15px;">
+    <input type="password" id="reportPass" placeholder="ادخل كلمة السر"><br>
+    <input type="date" id="reportDate"><br>
+    <input type="text" id="reportName" placeholder="ابحث بجزء من الاسم"><br>
+    <button onclick="showReport()">عرض التقرير</button>
+    <button onclick="printReport()">🖨️ طباعة التقرير</button>
+  </div>
+
+  <div id="reportBox"></div>
 </div>
-
-<div id="reportBox"></div>
-
-
 <script>
   const scriptUrl = "https://script.google.com/macros/s/AKfycbwVfdAME4raBfkaDet7pYD9LzsJ1jNxF5QFgFlfUXDWOzit025qzveDMTToB6rZc8Qg/exec";
 
   async function searchNID() {
-    const nid = document.getElementById("nid").value.trim();
-    if (!nid) { alert("من فضلك أدخل الرقم القومي"); return; }
+    let nid = document.getElementById("nid").value.trim();
+
+    if (!nid || nid.length !== 14) {
+      alert("❌ الرقم القومي لازم يكون 14 رقم بالظبط");
+      return;
+    }
 
     document.getElementById("loading").innerText = "جاري التحقق...";
 
@@ -116,29 +112,37 @@
   }
 
   function submitForm(e) {
-  e.preventDefault();
-  const form = document.getElementById("attendanceForm");
-  const formData = new FormData(form);
+    e.preventDefault();
+    const form = document.getElementById("attendanceForm");
+    const formData = new FormData(form);
 
-  // ناخد القيمة المختارة من الأجبية
-  const agpeyaChecked = form.querySelector("input[name='agpeya']:checked");
-  const agpeya = agpeyaChecked ? agpeyaChecked.value : "";
+    let nid = document.getElementById("nid").value.trim();
+    if (!nid || nid.length !== 14) {
+      alert("❌ الرقم القومي لازم يكون 14 رقم بالظبط");
+      return;
+    }
 
-  // ناخد القيمة المختارة من القراءات
-  const readingsChecked = form.querySelector("input[name='readings']:checked");
-  const readings = readingsChecked ? readingsChecked.value : "";
+    const agpeyaChecked = form.querySelector("input[name='agpeya']:checked");
+    const agpeya = agpeyaChecked ? agpeyaChecked.value : "";
 
-  formData.append("nid", document.getElementById("nid").value);
-  formData.append("name", document.getElementById("nameBox").innerText.replace("الاسم: ",""));
-  formData.append("agpeya", agpeya);
-  formData.append("readings", readings);
-  formData.append("action", "save");
+    const readingsChecked = form.querySelector("input[name='readings']:checked");
+    const readings = readingsChecked ? readingsChecked.value : "";
 
-  fetch(scriptUrl, { method: "POST", body: formData })
-    .then(res => res.text())
-    .then(txt => alert(txt))
-    .catch(err => alert("خطأ: " + err));
-}
+    formData.append("nid", nid);
+    formData.append("name", document.getElementById("nameBox").innerText.replace("الاسم: ",""));
+    formData.append("agpeya", agpeya);
+    formData.append("readings", readings);
+    formData.append("action", "save");
+
+    fetch(scriptUrl, { method: "POST", body: formData })
+      .then(res => res.text())
+      .then(txt => alert(txt))
+      .catch(err => alert("خطأ: " + err));
+  }
+
+  function showReportForm() {
+    document.getElementById("reportForm").style.display = "block";
+  }
 
   async function showReport() {
     const pass = document.getElementById("reportPass").value.trim();
@@ -156,39 +160,16 @@
     const report = await response.text();
     document.getElementById("reportBox").innerHTML = report;
   }
-  function showReportForm() {
-  // إظهار الفورم لما المستخدم يضغط زر "عرض التقرير"
-  document.getElementById("reportForm").style.display = "block";
-}
 
-async function showReport() {
-  const pass = document.getElementById("reportPass").value.trim();
-  const date = document.getElementById("reportDate").value.trim();
-  const name = document.getElementById("reportName").value.trim();
-
-  const params = new URLSearchParams({ action: "report", password: pass });
-  if (date) params.append("filterDate", date);
-  if (name) params.append("filterName", name);
-
-  const response = await fetch(scriptUrl, {
-    method: "POST",
-    body: params
-  });
-  const report = await response.text();
-  document.getElementById("reportBox").innerHTML = report;
-}
-
-function printReport() {
-  // فتح نافذة الطباعة للتقرير
-  const reportContent = document.getElementById("reportBox").innerHTML;
-  const printWindow = window.open('', '', 'height=600,width=800');
-  printWindow.document.write('<html><head><title>تقرير الحضور</title></head><body>');
-  printWindow.document.write(reportContent);
-  printWindow.document.write('</body></html>');
-  printWindow.document.close();
-  printWindow.print();
-}
-
+  function printReport() {
+    const reportContent = document.getElementById("reportBox").innerHTML;
+    const printWindow = window.open('', '', 'height=600,width=800');
+    printWindow.document.write('<html><head><title>تقرير الحضور</title></head><body>');
+    printWindow.document.write(reportContent);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+  }
 </script>
 
 </body>
