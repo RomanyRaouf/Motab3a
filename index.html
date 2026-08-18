@@ -80,6 +80,14 @@
 <script>
   const scriptUrl = "https://script.google.com/macros/s/AKfycbysQyWnWdZurkpCr9iINOyNdo7CcMsfGGAFB0hue_2bIaRaM3xEt5r-XLubNghcTzk1/exec";
 
+  // استرجاع الرقم القومي عند فتح الصفحة
+  window.onload = function() {
+    const savedNID = localStorage.getItem("savedNID");
+    if (savedNID) {
+      document.getElementById("nid").value = savedNID;
+    }
+  };
+
   async function searchNID() {
     let nid = document.getElementById("nid").value.trim();
     document.getElementById("loading").innerText = "جاري التحقق...";
@@ -119,7 +127,11 @@
     formData.append("action", "save");
     fetch(scriptUrl, { method: "POST", body: formData })
       .then(res => res.text())
-      .then(txt => alert(txt))
+      .then(txt => {
+        alert(txt);
+        // حفظ الرقم القومي بعد التسجيل
+        localStorage.setItem("savedNID", nid);
+      })
       .catch(err => alert("خطأ: " + err));
   }
 
