@@ -2,7 +2,7 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>متابعة روحية </title>
+  <title>متابعة روحية</title>
   <style>
     body {font-family: Cairo, Arial; direction: rtl; background: #f4f4f4; padding: 20px;}
     .form-box {background: #fff; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
@@ -20,17 +20,16 @@
   </style>
 </head>
 <body>
-
 <div class="form-box">
-  <h2> متابعة روحية كنيسة العذراء مريم بالنواميس والمراونة</h2>
+  <h2>متابعة روحية كنيسة العذراء مريم بالنواميس والمراونة</h2>
   <h2>إعداد روماني رؤوف</h2>
+
   <label>الرقم القومي:</label>
   <input type="text" id="nid" placeholder="ادخل الرقم القومي">
   <button onclick="searchNID()">بحث</button>
   
   <div id="loading"></div>
   <div id="nameBox" style="margin-top:15px; font-weight:bold;"></div>
-  
   <form id="attendanceForm" onsubmit="submitForm(event)" style="display:none; margin-top:20px;">
     
     <div class="section">
@@ -64,7 +63,6 @@
     
     <button type="submit">تسجيل</button>
   </form>
-
   <hr>
   <h3>التقرير</h3>
   <button onclick="showReportForm()">عرض التقرير</button>
@@ -79,9 +77,8 @@
 
   <div id="reportBox"></div>
 </div>
-
 <script>
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbyc0jB3-Gb-Z-F-lGvh8IzvSYeXf2njaDSblQJ8Q7smZka2j9vVvbCVOzdsOcsvRyuJLQ/exec";
+  const scriptUrl = "https://script.google.com/macros/s/AKfycbysQyWnWdZurkpCr9iINOyNdo7CcMsfGGAFB0hue_2bIaRaM3xEt5r-XLubNghcTzk1/exec";
 
   async function searchNID() {
     let nid = document.getElementById("nid").value.trim();
@@ -97,8 +94,8 @@
         document.getElementById("nameBox").innerText = "الاسم: " + name;
         document.getElementById("attendanceForm").style.display = "block";
       } else {
-        document.getElementById("nameBox").innerText = "الرقم غير موجود، برجاء التسجيل أولاً.";
-        document.getElementById("attendanceForm").style.display = "block";
+        document.getElementById("nameBox").innerText = "❌ الرقم القومي غير موجود، برجاء التسجيل أولاً.";
+        document.getElementById("attendanceForm").style.display = "none";
       }
     } catch (err) {
       document.getElementById("loading").innerText = "";
