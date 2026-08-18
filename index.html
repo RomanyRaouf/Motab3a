@@ -2,9 +2,9 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>متابعة روحية  </title>
+  <title>متابعة روحية </title>
   <style>
-    body {font-family: Tahoma, Arial; direction: rtl; background: #f4f4f4; padding: 20px;}
+    body {font-family: Cairo, Arial; direction: rtl; background: #f4f4f4; padding: 20px;}
     .form-box {background: #fff; padding: 20px; border-radius: 8px; max-width: 800px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
     label {display: block; margin: 10px 0 5px; font-weight: bold;}
     input[type="text"], input[type="password"], input[type="date"], select {width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 4px;}
@@ -20,10 +20,10 @@
   </style>
 </head>
 <body>
+
 <div class="form-box">
-  <h2>متابعة روحية كنيسة العذراء مريم بالنواميس والمراونة </h2>
-  <h2> إعداد روماني رؤوف</h2>
-  
+  <h2> متابعة روحية كنيسة العذراء مريم بالنواميس والمراونة</h2>
+  <h2>إعداد روماني رؤوف</h2>
   <label>الرقم القومي:</label>
   <input type="text" id="nid" placeholder="ادخل الرقم القومي">
   <button onclick="searchNID()">بحث</button>
@@ -48,6 +48,7 @@
         <select name="meeting"><option>حضر</option><option>لم يحضر</option></select>
       </label>
     </div>
+
     <div class="section">
       <h3>الأجبية</h3>
       <label><input type="radio" name="agpeya" value="منتظم"> منتظم</label>
@@ -63,6 +64,7 @@
     
     <button type="submit">تسجيل</button>
   </form>
+
   <hr>
   <h3>التقرير</h3>
   <button onclick="showReportForm()">عرض التقرير</button>
@@ -77,28 +79,20 @@
 
   <div id="reportBox"></div>
 </div>
+
 <script>
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbwVfdAME4raBfkaDet7pYD9LzsJ1jNxF5QFgFlfUXDWOzit025qzveDMTToB6rZc8Qg/exec";
+  const scriptUrl = "https://script.google.com/macros/s/AKfycbyc0jB3-Gb-Z-F-lGvh8IzvSYeXf2njaDSblQJ8Q7smZka2j9vVvbCVOzdsOcsvRyuJLQ/exec";
 
   async function searchNID() {
     let nid = document.getElementById("nid").value.trim();
-
-    if (!nid || nid.length !== 14) {
-      alert("❌ الرقم القومي لازم يكون 14 رقم بالظبط");
-      return;
-    }
-
     document.getElementById("loading").innerText = "جاري التحقق...";
-
     try {
       const response = await fetch(scriptUrl, {
         method: "POST",
         body: new URLSearchParams({ nid: nid, action: "search" })
       });
       const name = await response.text();
-
       document.getElementById("loading").innerText = "";
-
       if (name && name !== "غير موجود") {
         document.getElementById("nameBox").innerText = "الاسم: " + name;
         document.getElementById("attendanceForm").style.display = "block";
@@ -116,25 +110,16 @@
     e.preventDefault();
     const form = document.getElementById("attendanceForm");
     const formData = new FormData(form);
-
     let nid = document.getElementById("nid").value.trim();
-    if (!nid || nid.length !== 14) {
-      alert("❌ الرقم القومي لازم يكون 14 رقم بالظبط");
-      return;
-    }
-
     const agpeyaChecked = form.querySelector("input[name='agpeya']:checked");
     const agpeya = agpeyaChecked ? agpeyaChecked.value : "";
-
     const readingsChecked = form.querySelector("input[name='readings']:checked");
     const readings = readingsChecked ? readingsChecked.value : "";
-
     formData.append("nid", nid);
     formData.append("name", document.getElementById("nameBox").innerText.replace("الاسم: ",""));
     formData.append("agpeya", agpeya);
     formData.append("readings", readings);
     formData.append("action", "save");
-
     fetch(scriptUrl, { method: "POST", body: formData })
       .then(res => res.text())
       .then(txt => alert(txt))
@@ -149,15 +134,10 @@
     const pass = document.getElementById("reportPass").value.trim();
     const date = document.getElementById("reportDate").value.trim();
     const name = document.getElementById("reportName").value.trim();
-
     const params = new URLSearchParams({ action: "report", password: pass });
     if (date) params.append("filterDate", date);
     if (name) params.append("filterName", name);
-
-    const response = await fetch(scriptUrl, {
-      method: "POST",
-      body: params
-    });
+    const response = await fetch(scriptUrl, { method: "POST", body: params });
     const report = await response.text();
     document.getElementById("reportBox").innerHTML = report;
   }
